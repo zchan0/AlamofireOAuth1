@@ -2,11 +2,12 @@
 //  AppDelegate.swift
 //  AlamofireOAuth1
 //
-//  Created by zchan0 on 08/24/2018.
-//  Copyright (c) 2018 zchan0. All rights reserved.
+//  Created by Cencen Zheng on 08/24/2018.
+//  Copyright (c) 2018 Cencen Zheng. All rights reserved.
 //
 
 import UIKit
+import AlamofireOAuth1
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let viewController = ViewController(style: .plain)
+        let navigation = UINavigationController(rootViewController: viewController)
+        window?.rootViewController = navigation
+        return true
+    }
+    
+    internal func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.host == "alamofire-oauth1", url.path.contains("callback") {
+            OAuth1.handleCallback(callbackURL: url)
+        }
         return true
     }
 
