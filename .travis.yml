@@ -12,8 +12,8 @@ before_install:
 - brew update
 - brew outdated xctool || brew upgrade xctool
 script:
-- xcodebuild test -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=12' build-for-testing ONLY_ACTIVE_ARCH=NO
-- xctool run-tests -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xcodebuild -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool test -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - pod lib lint --allow-warnings
 - pod spec lint --allow-warnings
 - pod trunk push --allow-warnings
