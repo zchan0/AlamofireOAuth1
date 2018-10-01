@@ -12,11 +12,11 @@ branches:
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
-- brew update
-- brew outdated xctool || brew upgrade xctool
+# - brew update
+# - brew outdated xctool || brew upgrade xctool
 script:
 - xcodebuild -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool test -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+# - xctool test -workspace Example/AlamofireOAuth1.xcworkspace -scheme AlamofireOAuth1-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - pod lib lint --allow-warnings
 - pod spec lint --allow-warnings
-- pod trunk push --allow-warnings
+# - pod trunk push --allow-warnings
