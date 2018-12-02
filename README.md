@@ -7,6 +7,15 @@
 
 AlamofireOAuth1 is an OAuth1 library based on Alamofire for iOS.
 
+## Installation
+
+AlamofireOAuth1 is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'AlamofireOAuth1'
+```
+
 ## Why  
 
 You don't have much choices for OAuth1 library based on Swift, [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) maybe the best(and the only) one. However, it's kind of huge(if you just need OAuth1 or OAuth 2). Moreover, you have to call `oauthswift.client` to make a signed request(while you have already had a HTTPClient based on [Alamofire](https://github.com/Alamofire/Alamofire)).
@@ -39,7 +48,7 @@ oauth1.fetchAccessToken(accessMethod: .get, successHandler: { (accessToken) in
 }, failureHandler: errorHandler)
 ```
 
-Don't forget to register your application to launch from a custom URL scheme. In this case, the callback url is `alamofire-oauth1://callback`.
+Don't forget to register your application to launch from a custom URL scheme. In this case, the URL scheme is `alamofire-oauth1://callback` (based on the `callbackUrl`). 
 
 Handle the custom URL scheme on iOS with `handleCallback`:
 
@@ -116,15 +125,6 @@ open func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. [ViewController.swift](https://github.com/zchan0/AlamofireOAuth1/blob/master/Example/AlamofireOAuth1/ViewController.swift) shows the process of authenticating against [Twitter](https://developer.twitter.com/en/docs/basics/authentication/overview/oauth) and Fanfou([饭否](http://fanfou.com/apps)).
-
-## Installation
-
-AlamofireOAuth1 is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'AlamofireOAuth1'
-```
 
 ## License
 
