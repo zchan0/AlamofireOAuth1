@@ -83,7 +83,7 @@ public class OAuth1 {
         token = accessToken.token
         tokenSecret = accessToken.tokenSecret
         
-        var parameters = OAuth1Parameters()
+        var parameters = generateParameters()
         
         guard let urlString = urlRequest.url?.absoluteString,
             let httpMethodString = urlRequest.httpMethod,
@@ -119,7 +119,7 @@ extension OAuth1 {
         successHandler: @escaping SuccessHandler,
         failureHandler: @escaping FailureHandler)
     {
-        var parameters = OAuth1Parameters()
+        var parameters = generateParameters()
         guard let baseString = constructBaseString(withBaseUrl: requestTokenUrl, accessMethod: accessMethod, parameters: parameters) else {
             print("Error: cannot construct base string")
             return
@@ -151,7 +151,7 @@ extension OAuth1 {
         token = requestToken.token
         tokenSecret = requestToken.tokenSecret
         
-        var parameters = OAuth1Parameters()
+        var parameters = generateParameters()
         parameters["oauth_callback"] = callbackUrl
         
         self.observeCallback { (url) in
@@ -183,7 +183,7 @@ extension OAuth1 {
     {
         token = requestToken.token
         
-        var parameters = OAuth1Parameters()
+        var parameters = generateParameters()
         
         guard let baseString = constructBaseString(withBaseUrl: accessTokenUrl, accessMethod: accessMethod, parameters: parameters) else {
             print("Error: cannot construct base string")
@@ -228,7 +228,7 @@ extension OAuth1 {
 
 // MARK: - Helpers
 extension OAuth1 {
-    private func OAuth1Parameters() -> Dictionary<String, String> {
+    private func generateParameters() -> Dictionary<String, String> {
         var parameters = Dictionary<String, String>()
         parameters["oauth_version"] = version
         parameters["oauth_consumer_key"] = key

@@ -6,12 +6,10 @@
 //
 
 import Alamofire
-import KeychainAccess
 import AlamofireOAuth1
 
 public class APIClient: RequestAdapter {
     public var sessionManager: SessionManager
-    public var keychain: Keychain
     
     fileprivate let oauth1: OAuth1
     fileprivate let tokenId: String
@@ -20,7 +18,6 @@ public class APIClient: RequestAdapter {
     }
     
     init(with oauth: OAuth1) {
-        self.keychain = Keychain()
         self.oauth1 = OAuth1(with: oauth)
         self.tokenId = oauth1.key
         self.sessionManager = SessionManager()
