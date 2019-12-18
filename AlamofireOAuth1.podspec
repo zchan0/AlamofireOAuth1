@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AlamofireOAuth1'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'OAuth1 library based on Alamofire for iOS.'
 
 # This description is used to generate tags and improve search results.
@@ -28,8 +28,8 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/zchan0/AlamofireOAuth1.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-  s.swift_version = '4.2'
+  s.ios.deployment_target = '11.0'
+  s.swift_version = '5.0'
 
   s.source_files = 'AlamofireOAuth1/Classes/**/*'
   
